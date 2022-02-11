@@ -16,10 +16,10 @@ async function setTag(messageId, tag) {
         if (!tags.find(t => t.key.toLowerCase() == key)) {
             console.log(`Tag ${tag} did not exist -- creating!`)
             messenger.tagservice.AddTag({
-                color: 'black',
-                key: key,       // Unique tag key
-                tag: tag,       // Display tag name
-                ordinal: ''     // Custom sort string (usually empty)
+                color: '#CCCCCC', // In my experience (with dark theme) the least obtrusive color
+                key: key,         // Unique tag key
+                tag: tag,         // Display tag name
+                ordinal: ''       // Custom sort string (usually empty)
             })
         }
 
@@ -44,6 +44,7 @@ async function load() {
         const tag = document.querySelector('#inpt').value
 
         await setTag(msg.id, tag)
+        window.close()
     })
 }
 
